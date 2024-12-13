@@ -7,6 +7,13 @@ import SignUp from './pages/SignUp';
 import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
 import Home from './pages/Home';
+import VegetableItems from './pages/VegetableItems';
+import FruitItems from './pages/FruitItems';
+import DairyItems from './pages/DairyItems';
+import Settings from './pages/Settings';
+import Profile from './pages/Profile';
+import Cart from './pages/Cart';
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -18,6 +25,12 @@ const App = () => {
           <Route path='/about' element={<AboutUs />} />
           <Route path='/contact' element={<ContactUs />} />
           <Route path='/home' element={<Home />} />
+          <Route path='/vegetables' element={<VegetableItems />} />
+          <Route path='/fruits' element={<FruitItems />} />
+          <Route path='/dairies' element={<DairyItems />} />
+          <Route path='/settings' element={<Settings />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/cart' element={<Cart />} />
         </Routes>
       </div>
     </BrowserRouter>

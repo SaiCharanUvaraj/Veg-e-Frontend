@@ -29,10 +29,17 @@ const SignIn = () => {
       setMsg("Enter your registered phone number and password.");
       return
     }
-    const response=await axios.post("http://localhost:3000/auth-user",{phone:form.phone, pwd:form.pwd});
-    setMsg(response.data.message);
-    if(response.data.success===true)
-      setTimeout(()=>navigate('/home'),1500);
+    try
+    {
+      const response=await axios.post("http://localhost:3000/auth-user",{phone:form.phone, pwd:form.pwd});
+      setMsg(response.data.message);
+      if(response.data.success===true)
+        setTimeout(()=>navigate('/home'),1500);
+    }
+    catch
+    {
+      setMsg('Error in signing into account. Please try again !');
+    }
   };
 
   const handleOtpSubmit = async(e) => {
@@ -43,15 +50,22 @@ const SignIn = () => {
       setMsg("Enter the OTP sent to your phone number")
     else
     {
-      const response = await axios.post("http://localhost:3000/verify-forgot-otp", { number: form.phone, otp });
-      if(response.data.success===true)
+      try
       {
-        setTimeout(()=>navigate('/home'),1500);
-        setMsg(`${response.data.message} Signing into your account...`);
+        const response = await axios.post("http://localhost:3000/verify-forgot-otp", { number: form.phone, otp });
+        if(response.data.success===true)
+        {
+          setTimeout(()=>navigate('/home'),1500);
+          setMsg(`${response.data.message} Signing into your account...`);
+        }
+        else  
+          setMsg(response.data.message);
+          setOtp("");
       }
-      else  
-        setMsg(response.data.message);
-      setOtp("");
+      catch
+      {
+        setMsg('Error in verifying OTP. Please try again !');
+      }
     }
   };
 

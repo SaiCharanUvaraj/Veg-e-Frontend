@@ -4,7 +4,7 @@ import VegeInfo from '../components/VegeInfo'
 import { Link } from 'react-router-dom'
 import Fruits from '../components/Fruits'
 import Vegetables from '../components/Vegetables'
-import Dairy from '../components/Dairy'
+import Dairies from '../components/Dairies'
 
 const Landing = () => {
   const buttonStyle="rounded-lg bg-[#347928] hover:scale-110 active:scale-95 p-2 text-xl md:text-xl text-white transition-all duration-300"
@@ -34,7 +34,7 @@ const Landing = () => {
         <p className={textStyle}>to buy your first green</p>
       </div>
 
-      <Dairy />
+      <Dairies />
 
       <div className='grid md:grid-cols-2 grid-cols-1 gap-6 bg-[#C0EBA6] py-10'>
         <div className={divStyle}>

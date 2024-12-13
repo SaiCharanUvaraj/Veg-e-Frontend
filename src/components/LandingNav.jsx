@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const LandingNav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-  const linkStyle="text-lg font-bold transition duration-300 hover:-translate-y-1 hover:scale-110 active:scale-90";
-  const linkStyleM="text-lg font-bold transition duration-300 hover:translate-x-2";
+  const linkStyle="text-lg font-bold transition duration-300 hover:scale-110 active:scale-90";
+  const linkStyleM="text-lg font-bold";
 
   return (
     <nav className="bg-white/30 backdrop-blur-md p-5 fixed w-full z-50 rounded-b-xl">
@@ -18,6 +18,7 @@ const Navbar = () => {
           <Link to="/signup" className={linkStyle}>Sign Up</Link>
           <Link to="/about" className={linkStyle}>About Us</Link>
           <Link to="/contact" className={linkStyle}>Contact Us</Link>
+          <Link to="/home" className={linkStyle}>Home</Link>
         </div>
         <div className="md:hidden">
           <button onClick={toggleMenu} className="text-[#347928] hover:scale-110 focus:outline-none transition duration-300 active:scale-95">
@@ -41,4 +42,4 @@ const Navbar = () => {
   );
 }
 
-export default Navbar;
+export default LandingNav;
