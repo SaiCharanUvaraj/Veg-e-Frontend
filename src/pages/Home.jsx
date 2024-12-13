@@ -6,6 +6,7 @@ import Search from '../components/Search'
 import Navbar from '../components/Navbar'
 import Dairies from '../components/Dairies'
 import { Link } from 'react-router-dom'
+import Footer from '../components/Footer'
 
 const Home = () => {
   const buttonStyle='rounded-lg hover:bg-[#FCCD2A] hover:scale-110 active:scale-95 p-3 text-lg md:text-xl text-black transition-all duration-300 mb-2 bg-white font-semibold';
@@ -36,6 +37,8 @@ const Home = () => {
         <Dairies />
         <Link to="/dairies" className={buttonStyle}>View Dairies</Link>
       </div>
+
+      <Footer />
     </div>
   )
 }

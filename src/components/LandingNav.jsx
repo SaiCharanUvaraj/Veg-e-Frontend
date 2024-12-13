@@ -18,7 +18,7 @@ const LandingNav = () => {
           <Link to="/signup" className={linkStyle}>Sign Up</Link>
           <Link to="/about" className={linkStyle}>About Us</Link>
           <Link to="/contact" className={linkStyle}>Contact Us</Link>
-          <Link to="/home" className={linkStyle}>Home</Link>
+          <Link to="/home" className={linkStyle}>Home</Link> {/*chumma*/}
         </div>
         <div className="md:hidden">
           <button onClick={toggleMenu} className="text-[#347928] hover:scale-110 focus:outline-none transition duration-300 active:scale-95">
@@ -37,6 +37,7 @@ const LandingNav = () => {
         <Link to="/signup" className={linkStyleM}>Sign Up</Link>
         <Link to="/about" className={linkStyleM}>About Us</Link>
         <Link to="/contact" className={linkStyleM}>Contact Us</Link>
+        <Link to="/home" className={linkStyle}>Home</Link> {/*chumma*/}
       </div>
     </nav>
   );

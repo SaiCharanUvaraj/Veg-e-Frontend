@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom'
 import Fruits from '../components/Fruits'
 import Vegetables from '../components/Vegetables'
 import Dairies from '../components/Dairies'
+import Footer from '../components/Footer'
 
 const Landing = () => {
-  const buttonStyle="rounded-lg bg-[#347928] hover:scale-110 active:scale-95 p-2 text-xl md:text-xl text-white transition-all duration-300"
+  const buttonStyle="rounded-lg bg-[#347928] hover:bg-[#FCCD2A] hover:text-black hover:scale-110 active:scale-95 p-2 text-xl md:text-xl text-white transition-all duration-300"
   const textStyle="text-4xl itim-regular font-bold"
   const divStyle="grid place-items-center gap-y-3"
   return (
@@ -48,6 +49,8 @@ const Landing = () => {
           <p className={textStyle}>to know about us </p>
         </div>
       </div>
+
+      <Footer />
     </div>
   )
 }
