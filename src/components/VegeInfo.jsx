@@ -7,7 +7,7 @@ const VegeInfo = () => {
         <p className='nerko-one-regular text-5xl text-[#FCCD2A] font-extrabold text-center'>
             Your Freshness Hub for Farm-Fresh Goodness!
         </p>
-        <div>
+        <div className='flex space-x-4'>
         <p className='nerko-one-regular text-4xl text-black font-bold text-center'>Go </p>
         <p className='text-[#347928] nerko-one-regular text-4xl font-bold text-center'>Green</p> 
         <p className='nerko-one-regular text-4xl text-black font-bold text-center'>with Veg-e!</p>

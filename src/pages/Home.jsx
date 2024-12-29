@@ -19,11 +19,12 @@ const Home = () => {
         <VegeInfo />
       </div>
 
-      <div className='py-24'>
+      <div className='py-6 bg-[#FCCD2A]'>
+        <p className='nerko-one-regular text-5xl text-[#347928] text-center py-5'>Hi, Sai Charan !</p>
         <Search />
       </div>
 
-      <div className='grid place-items-center gap-5 my-20 bg-[#347928] py-2'>
+      <div className='grid place-items-center gap-5 bg-[#347928] py-2'>
         <Fruits />
         <Link to="/fruits" className={buttonStyle}>View Fruits</Link>
       </div>
