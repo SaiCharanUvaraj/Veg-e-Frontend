@@ -11,7 +11,7 @@ const LandingNav = () => {
   const linkStyleM="text-lg font-bold";
 
   return (
-    <nav className="bg-white/30 backdrop-blur-md p-5 fixed w-full shadow-lg z-50 rounded-b-xl">
+    <nav className="bg-white/30 backdrop-blur-md p-5 fixed w-full shadow-2xl z-50 rounded-b-xl">
       <div className="container mx-auto flex justify-end items-center">
         <div className="hidden md:flex space-x-10">
           <Link to="/signin" className={linkStyle}>Sign In</Link>

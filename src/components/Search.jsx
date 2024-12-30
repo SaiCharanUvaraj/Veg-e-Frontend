@@ -4,7 +4,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const origin = import.meta.env.VITE_ORIGIN || "http://localhost:3000";
-console.log(origin)
 
 const Search = () => {
     const [items,setItems]=useState([])
