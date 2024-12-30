@@ -4,6 +4,8 @@ import VegeInfo from '../components/VegeInfo';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const origin = import.meta.env.VITE_ORIGIN || "http://localhost:3000";
+
 const SignIn = () => {
   const [form, setForm] = useState({
     phone: "",
@@ -31,7 +33,7 @@ const SignIn = () => {
     }
     try
     {
-      const response=await axios.post("http://localhost:3000/auth-user",{phone:form.phone, pwd:form.pwd});
+      const response=await axios.post(`${origin}/auth-user`,{phone:form.phone, pwd:form.pwd});
       setMsg(response.data.message);
       if(response.data.success===true)
         setTimeout(()=>navigate('/home'),1500);
@@ -52,7 +54,7 @@ const SignIn = () => {
     {
       try
       {
-        const response = await axios.post("http://localhost:3000/verify-forgot-otp", { number: form.phone, otp });
+        const response = await axios.post(`${origin}/verify-forgot-otp`, { number: form.phone, otp });
         if(response.data.success===true)
         {
           setTimeout(()=>navigate('/home'),1500);
@@ -82,7 +84,7 @@ const SignIn = () => {
     {
       try 
       {
-        const response = await axios.post("http://localhost:3000/forgot-password", { number: form.phone });
+        const response = await axios.post(`${origin}/forgot-password`, { number: form.phone });
         if(response.data===false)
           setMsg("The Phone number is not registered !"); 
         else

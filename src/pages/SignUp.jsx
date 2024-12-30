@@ -4,7 +4,8 @@ import VegeInfo from '../components/VegeInfo';
 import axios from 'axios';
 import { isStrong } from '../utilities/Passwords';
 import { useNavigate } from 'react-router-dom';
-import ClipLoader from "react-spinners/ClipLoader";
+
+const origin = import.meta.env.VITE_ORIGIN || "http://localhost:3000";
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -51,7 +52,7 @@ const SignUp = () => {
       setMsg("Confirm your password as it is mismatching");
     else
     {
-      const response= await axios.post("http://localhost:3000/register-user",{phone:form.phone,pwd:form.pwd});
+      const response= await axios.post(`${origin}/register-user`,{phone:form.phone,pwd:form.pwd});
       setMsg(response.data.message);
       if(response.data.success===true)
           setTimeout(()=>navigate('/signin'),2000);
@@ -62,7 +63,7 @@ const SignUp = () => {
     e.preventDefault();
     try
     {
-      const response = await axios.post("http://localhost:3000/verify-otp", { number: form.phone, otp });
+      const response = await axios.post(`${origin}/verify-otp`, { number: form.phone, otp });
       setMsg(response.data.message); 
       if(response.data.success===true)
         setVerified(true);
@@ -86,7 +87,7 @@ const SignUp = () => {
     {
       try 
       {
-        const response = await axios.post("http://localhost:3000/send-otp", { number: form.phone });
+        const response = await axios.post(`${origin}/send-otp`, { number: form.phone });
         if(response.data===false)
           setMsg("The Phone number is already registered !"); 
         else
