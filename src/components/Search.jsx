@@ -2,8 +2,7 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
-const origin = import.meta.env.VITE_ORIGIN || "http://localhost:3000";
+import origin from '../utilities/Origin';
 
 const Search = () => {
     const [items,setItems]=useState([])

@@ -4,8 +4,7 @@ import VegeInfo from '../components/VegeInfo';
 import axios from 'axios';
 import { isStrong } from '../utilities/Passwords';
 import { useNavigate } from 'react-router-dom';
-
-const origin = import.meta.env.VITE_ORIGIN || "http://localhost:3000";
+import origin from '../utilities/Origin';
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -52,10 +51,8 @@ const SignUp = () => {
       setMsg("Confirm your password as it is mismatching");
     else
     {
-      const response= await axios.post(`${origin}/register-user`,{phone:form.phone,pwd:form.pwd});
-      setMsg(response.data.message);
-      if(response.data.success===true)
-          setTimeout(()=>navigate('/signin'),2000);
+      const data = {phone: form.phone, pwd:form.pwd};
+      navigate('/profile-completion', { state: data });
     }
   };
 

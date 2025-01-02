@@ -13,6 +13,7 @@ import DairyItems from './pages/DairyItems';
 import Settings from './pages/Settings';
 import Profile from './pages/Profile';
 import Cart from './pages/Cart';
+import ProfileCompletion from './pages/ProfileCompletion';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='/signin' element={<SignIn />} />
+          <Route path='/profile-completion' element={<ProfileCompletion />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/about' element={<AboutUs />} />
           <Route path='/contact' element={<ContactUs />} />

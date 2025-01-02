@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import VegeInfo from '../components/VegeInfo';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
-const origin = import.meta.env.VITE_ORIGIN || "http://localhost:3000";
+import origin from '../utilities/Origin';
 
 const SignIn = () => {
   const [form, setForm] = useState({
