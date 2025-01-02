@@ -18,7 +18,6 @@ const LandingNav = () => {
           <Link to="/signup" className={linkStyle}>Sign Up</Link>
           <Link to="/about" className={linkStyle}>About Us</Link>
           <Link to="/contact" className={linkStyle}>Contact Us</Link>
-          <Link to="/home" className={linkStyle}>Home</Link> {/*chumma*/}
         </div>
         <div className="md:hidden">
           {(!isOpen) &&
@@ -46,7 +45,6 @@ const LandingNav = () => {
         <Link to="/signup" className={linkStyleM}>Sign Up</Link>
         <Link to="/about" className={linkStyleM}>About Us</Link>
         <Link to="/contact" className={linkStyleM}>Contact Us</Link>
-        <Link to="/home" className={linkStyle}>Home</Link> {/*chumma*/}
       </div>
     </nav>
   );
