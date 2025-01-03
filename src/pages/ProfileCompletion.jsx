@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import origin from "../utilities/Origin";
 import axios from "axios";
+import Loader from "../components/Loader";
 
 const ProfileCompletion = () => {
     const inputBoxStyle = "rounded-lg mt-2 md:w-3/4 w-full focus:scale-105 text-lg h-10 transition-all duration-300 text-center p-2";
@@ -13,6 +14,7 @@ const ProfileCompletion = () => {
     const pwd = state.pwd || "";
     const [msg,setMsg]=useState("");
     const [form, setForm] = useState("open");
+    const [loading,setLoading]=useState(false);
     const [formState, setFormState] = useState({
         fname: "",
         lname: "",
@@ -43,6 +45,8 @@ const ProfileCompletion = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
+        setMsg("Signing you up and creating your profile...")
         const response1 = await axios.post(`${origin}/register-user`, {phone,pwd});
         const formData = {
             phone,
@@ -65,6 +69,7 @@ const ProfileCompletion = () => {
             setForm("over");
         else
             setMsg("Error in signing up. Please try again !")
+        setLoading(false);
     };
 
     return (
@@ -84,7 +89,7 @@ const ProfileCompletion = () => {
                 </div>
              )}
             {form==="open" && (
-                <form className="bg-[#C0EBA6] p-5 rounded-xl sm:w-3/4 lg:w-2/4 w-full mt-28 mx-2" onSubmit={handleSubmit}>
+                <form className="bg-[#C0EBA6] p-5 rounded-xl sm:w-3/4 lg:w-2/4 w-full mt-28 mx-2 mb-16" onSubmit={handleSubmit}>
                     <center>
                         <div className="my-8">
                             <label className={lableStyle}>First Name</label><br />
@@ -119,6 +124,9 @@ const ProfileCompletion = () => {
                         </button>
                         <div className={lableStyle}>
                             {msg}
+                        </div>
+                        <div>
+                            {loading && <Loader />}
                         </div>
                     </center>
                 </form>

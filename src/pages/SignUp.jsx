@@ -5,6 +5,7 @@ import axios from 'axios';
 import { isStrong } from '../utilities/Passwords';
 import { useNavigate } from 'react-router-dom';
 import origin from '../utilities/Origin';
+import Loader from '../components/Loader';
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -16,6 +17,7 @@ const SignUp = () => {
   const [otp,setOtp]=useState("");
   const [otpBox,setOtpBox]=useState(false);
   const [verified,setVerified]=useState(false);
+  const [loading,setLoading]=useState(false);
   const navigate=useNavigate();
 
   const inputBoxStyle = "rounded-lg mt-2 w-5/6 focus:scale-105 text-lg h-10 transition-all duration-300 text-center p-2";
@@ -58,6 +60,8 @@ const SignUp = () => {
 
   const handleOtpSubmit = async(e) => {
     e.preventDefault();
+    setLoading(true);
+    setMsg("");
     try
     {
       const response = await axios.post(`${origin}/verify-otp`, { number: form.phone, otp });
@@ -70,8 +74,9 @@ const SignUp = () => {
     }   
     catch (error) 
     {
-      setMsg('Error in connecting to server !');
+      setMsg('Error in verifying otp. Please try again !');
     }
+    setLoading(false);
   };  
 
   const handleVerify = async (e) => {
@@ -82,6 +87,8 @@ const SignUp = () => {
       setMsg("Invalid phone number");
     else
     {
+      setLoading(true);
+      setMsg("");
       try 
       {
         const response = await axios.post(`${origin}/send-otp`, { number: form.phone });
@@ -97,6 +104,7 @@ const SignUp = () => {
       {
         setMsg('Error in sending OTP. Please try again !');
       }
+      setLoading(false);
     }
   };  
 
@@ -157,6 +165,10 @@ const SignUp = () => {
 
               <div className='my-2 text-lg text-red-600 font-bold'>
                 {msg}
+              </div>
+
+              <div>
+                {loading && <Loader />}
               </div>
 
               <button className="rounded-lg bg-[#347928] hover:scale-110 active:scale-95 p-2 text-lg md:text-xl text-white transition-all duration-300 mb-2" onClick={handleSubmit}>
