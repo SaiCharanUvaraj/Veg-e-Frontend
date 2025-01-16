@@ -11,6 +11,7 @@ import { useState,useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import origin from '../utilities/Origin'
+import Loader from '../components/Loader'
 
 const Home = () => {
   const buttonStyle='rounded-lg hover:bg-[#FCCD2A] hover:scale-110 active:scale-95 p-3 text-lg md:text-xl text-black transition-all duration-300 mb-2 bg-white font-semibold';
@@ -20,14 +21,32 @@ const Home = () => {
   useEffect(() => {
     const fetchInfo = async () => {
       axios.defaults.withCredentials = true;
-      const response = await axios.get(`${origin}/fetch-info`);
-      if(response.data.success)
-        setUserInfo(response.data.data);
-      else
+      try 
+      {
+        const response = await axios.get(`${origin}/fetch-info`);
+        if (response.data.success)
+          setUserInfo(response.data.data);
+        else
+          navigate('/signin');
+      } 
+      catch (error) 
+      {
         navigate('/signin');
+      }
     };
     fetchInfo();
   }, []);
+
+  if (!userInfo) {
+    return (
+      <div>
+        <Navbar />
+        <div className='flex justify-center items-center h-screen scale-150'>
+          <Loader />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>

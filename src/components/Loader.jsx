@@ -9,7 +9,7 @@ const Loader = () => {
     };
     return (
     <div className='my-2'>
-        <ClipLoader cssOverride={override} size={20}/>
+        <ClipLoader cssOverride={override} size={30}/>
     </div>
   )
 }
