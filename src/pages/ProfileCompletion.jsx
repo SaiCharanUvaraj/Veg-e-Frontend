@@ -91,10 +91,10 @@ const ProfileCompletion = () => {
             if (response1.data.success === true && response2.data.success === true) {
                 setForm("over");
             } else {
-                setMsg("Error in signing up and creating your profile. Please try again!");
+                setMsg("Error in signing up and creating your profile. Please try again !");
             }
         } catch (error) {
-            setMsg("An error occurred. Please try again later.");
+            setMsg("Error in signing up and creating your profile. Please try again !");
         } finally {
             setLoading(false);
         }

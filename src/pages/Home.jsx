@@ -7,9 +7,27 @@ import Navbar from '../components/Navbar'
 import Dairies from '../components/Dairies'
 import { Link } from 'react-router-dom'
 import Footer from '../components/Footer'
+import { useState,useEffect } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import origin from '../utilities/Origin'
 
 const Home = () => {
   const buttonStyle='rounded-lg hover:bg-[#FCCD2A] hover:scale-110 active:scale-95 p-3 text-lg md:text-xl text-black transition-all duration-300 mb-2 bg-white font-semibold';
+  const [userInfo, setUserInfo] = useState(null); 
+  const navigate = useNavigate();  
+
+  useEffect(() => {
+    const fetchInfo = async () => {
+      axios.defaults.withCredentials = true;
+      const response = await axios.get(`${origin}/fetch-info`);
+      if(response.data.success)
+        setUserInfo(response.data.data);
+      else
+        navigate('/signin');
+    };
+    fetchInfo();
+  }, []);
 
   return (
     <div>
@@ -20,7 +38,9 @@ const Home = () => {
       </div>
 
       <div className='py-6 bg-[#FCCD2A]'>
-        <p className='nerko-one-regular text-5xl text-[#347928] text-center py-5'>Hi, Sai Charan !</p>
+        <p className='nerko-one-regular text-5xl text-[#347928] text-center py-5'>
+          {userInfo ? `Hi, ${userInfo.name.fname}` : ""}
+        </p>
         <Search />
       </div>
 

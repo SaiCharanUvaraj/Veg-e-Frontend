@@ -34,18 +34,21 @@ const SignIn = () => {
       setMsg("Enter your registered phone number and password.");
       return;
     }
-
     setLoading(true); // Show loader
     setMsg("Signing into your account...");
-
-    try {
+    try 
+    {
       // Send a POST request to authenticate the user
-      const response = await axios.post(`${origin}/auth-user`, { phone: form.phone, pwd: form.pwd });
+      const response = await axios.post(`${origin}/auth-user`, { phone: form.phone, pwd: form.pwd },{ withCredentials: true });
 
       // Navigate to home if authentication is successful, else display the error message
-      if (response.data.success === true) navigate('/home');
-      else setMsg(response.data.message);
-    } catch {
+      if (response.data.success) 
+        navigate('/home');
+      else 
+        setMsg(response.data.message);
+    } 
+    catch 
+    {
       setMsg('Error in signing into account. Please try again!');
     }
     setLoading(false); // Hide loader
@@ -62,15 +65,18 @@ const SignIn = () => {
       setLoading(true); // Show loader
       setMsg("Signing into your account...");
 
-      try {
+      try 
+      {
         // Send a POST request to verify the OTP
         const response = await axios.post(`${origin}/verify-forgot-otp`, { number: form.phone, otp });
         setMsg(response.data.message);
 
         // Navigate to home if OTP verification is successful
         if (response.data.success === true) navigate('/home');
-        else setOtp(""); // Clear OTP input on failure
-      } catch {
+          else setOtp(""); // Clear OTP input on failure
+      } 
+      catch 
+      {
         setMsg('Error in verifying OTP. Please try again!');
       }
       setLoading(false); // Hide loader
@@ -173,12 +179,12 @@ const SignIn = () => {
               </div>
 
               {/* Conditional rendering for submit button */}
-              {forgot && (
+              {forgot && !loading && (
                 <button className="rounded-lg bg-[#347928] hover:scale-110 active:scale-95 p-2 text-lg md:text-xl text-white transition-all duration-300 mb-2" onClick={handleOtpSubmit}>
                   Sign In
                 </button>
               )}
-              {!forgot && (
+              {!forgot && !loading && (
                 <button className="rounded-lg bg-[#347928] hover:scale-110 active:scale-95 p-2 text-lg md:text-xl text-white transition-all duration-300 mb-2" onClick={handleSubmit}>
                   Sign In
                 </button>
