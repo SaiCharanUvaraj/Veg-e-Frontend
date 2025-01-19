@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import origin from '../utilities/Origin';
 import { FaCog, FaShoppingCart, FaUserCircle, FaList, FaSignOutAlt, FaAppleAlt, FaCarrot } from "react-icons/fa";
-import { FaBars, FaTimes, FaHome, FaGlassMartiniAlt, FaSearch, FaChevronDown, FaUser } from "react-icons/fa";
+import { FaBars, FaTimes, FaHome, FaSearch, FaChevronDown, FaUser, FaCheese} from "react-icons/fa";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -47,11 +47,11 @@ const Navbar = () => {
   // Style variables for consistent styling across links and icons
   const linkStyle = "flex items-center text-lg justify-center space-x-1 font-bold transition duration-300 hover:scale-110 active:scale-90";
   const linkStyleM = "flex items-center space-x-1 text-lg font-bold";
-  const dropdownStyle = 'grid place-items-start absolute gap-3 mt-7 bg-white/30 backdrop-blur-lg shadow-lg rounded-lg text-black p-3';
+  const dropdownStyle = 'absolute grid place-items-start gap-3 mt-7 bg-white/50 backdrop-blur-2xl shadow-2xl rounded-lg text-black p-3 border';
   const dropdownStyleM = 'grid place-items-start gap-3 mt-2 bg-white/30 backdrop-blur-lg shadow-lg rounded-lg text-black p-3';
 
   return (
-    <nav className="bg-white/30 backdrop-blur-lg p-5 fixed w-full z-50 rounded-b-xl shadow-2xl">
+    <nav className="bg-white/40 backdrop-blur-lg p-5 fixed w-full z-[100] rounded-b-xl shadow-2xl border">
       <div>
         <div className="container mx-auto flex justify-end items-center">
           {/* Desktop Menu */}
@@ -82,7 +82,7 @@ const Navbar = () => {
                     <p>Fruits</p>
                   </Link>
                   <Link to="/dairies" className={linkStyle}>
-                    <FaGlassMartiniAlt />
+                    <FaCheese />
                     <p>Dairies</p>
                   </Link>
                 </div>
@@ -174,7 +174,7 @@ const Navbar = () => {
                   <p>Fruits</p>
                 </Link>
                 <Link to="/dairies" className={linkStyleM}>
-                  <FaGlassMartiniAlt />
+                  <FaCheese />
                   <p>Dairies</p>
                 </Link>
               </div>}

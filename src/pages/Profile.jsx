@@ -27,7 +27,7 @@ const Profile = () => {
       }
     };
     fetchInfo();
-  }, [navigate]);
+  }, []);
 
   if (!userInfo) {
     return (
