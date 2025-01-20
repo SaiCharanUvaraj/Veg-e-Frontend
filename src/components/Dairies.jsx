@@ -11,15 +11,15 @@ const dairies= [
 const Dairies = () => {
   return (
     <div className="flex flex-col justify-center items-center bg-[#347928] px-5 py-14">
-        <p className='text-4xl text-[#FCCD2A] text-center dynapuff font-bold p-2'>Dairy Products</p>
-        <p className='text-2xl text-white text-center dynapuff mb-2'>Pure, Natural, and Delicious Dairy!</p>
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 place-items-center">
-          {dairies.map((src, index) => (
-            <div key={index} className="overflow-hidden rounded-lg shadow-lg">
-              <img src={src} alt={`Image ${index + 1}`} className="hover:scale-110 transition-transform duration-300" />
-            </div>
-          ))}
-        </div>
+      <p className='text-4xl text-[#FCCD2A] text-center dynapuff font-bold p-2'>Dairy Products</p>
+      <p className='text-2xl text-white text-center dynapuff mb-2'>Pure, Natural, and Delicious Dairy!</p>
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 place-items-center">
+        {dairies.map((src, index) => (
+          <div key={index} className="overflow-hidden rounded-lg shadow-lg">
+            <img src={src} alt={`Image ${index + 1}`} className="hover:scale-110 transition-transform duration-300" />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

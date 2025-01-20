@@ -8,7 +8,7 @@ import Dairies from '../components/Dairies'
 import Footer from '../components/Footer'
 
 const Landing = () => {
-  const buttonStyle="rounded-lg bg-[#347928] hover:bg-[#FCCD2A] hover:text-black hover:scale-110 active:scale-95 p-2 text-xl md:text-xl text-white transition-all duration-300"
+  const buttonStyle="rounded-lg bg-[#FCCD2A] hover:scale-110 active:scale-95 p-2 text-xl md:text-xl text-black transition-all duration-300"
   const textStyle="text-4xl itim-regular font-bold"
   const divStyle="grid place-items-center gap-y-3"
   return (
@@ -19,7 +19,10 @@ const Landing = () => {
         <VegeInfo />
       </div>
 
-      <Fruits />
+      <div className='grid place-items-center gap-3 bg-[#347928] py-5'>
+        <Fruits />
+        <Link to="/fruits" className={buttonStyle}>View Fruits</Link>
+      </div>
 
       <div className={divStyle}>
         <p className={textStyle}>Already a buyer?</p>
@@ -27,7 +30,10 @@ const Landing = () => {
         <p className={textStyle}>to buy greens</p>
       </div>
 
-      <Vegetables />
+      <div className='grid place-items-center gap-3 bg-[#347928] py-5'>
+        <Vegetables />
+        <Link to="/vegetables" className={buttonStyle}>View Vegetables</Link>
+      </div>
 
       <div className={divStyle}>
         <p className={textStyle}>New to Veg-e?</p>
@@ -35,9 +41,12 @@ const Landing = () => {
         <p className={textStyle}>to buy your first green</p>
       </div>
 
-      <Dairies />
+      <div className='grid place-items-center gap-3 bg-[#347928] py-5'>
+        <Dairies />
+        <Link to="/dairies" className={buttonStyle}>View Dairies</Link>
+      </div>
 
-      <div className='grid md:grid-cols-2 grid-cols-1 gap-6 bg-[#C0EBA6] py-10'>
+      <div className='grid md:grid-cols-2 grid-cols-1 gap-6 py-10'>
         <div className={divStyle}>
           <p className={textStyle}>Having any queries?</p>
           <Link className={buttonStyle} to="/contact">Contact Us</Link>

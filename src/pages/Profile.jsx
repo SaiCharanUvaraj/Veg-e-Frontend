@@ -3,7 +3,6 @@ import origin from '../utilities/Origin';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
-import VegeInfo from '../components/VegeInfo';
 import Loader from '../components/Loader';
 
 const Profile = () => {

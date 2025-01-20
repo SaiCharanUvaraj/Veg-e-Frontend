@@ -113,6 +113,8 @@ const Navbar = () => {
                     <FaUserCircle />
                     <p>Profile</p>
                   </Link>
+                  <Link to="/contact" className={linkStyle}>Contact Veg-e</Link>
+                  <Link to="/about" className={linkStyle}>About Veg-e</Link>
                   <button onClick={logout}>
                     <Link className={linkStyle}>
                       <FaSignOutAlt />
@@ -128,10 +130,6 @@ const Navbar = () => {
               <FaSearch />
               <p>Search</p>
             </Link>
-
-            {/* Other Links */}
-            <Link to="/contact" className={linkStyle}>Contact Us</Link>
-            <Link to="/about" className={linkStyle}>About Us</Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -202,6 +200,8 @@ const Navbar = () => {
                   <FaUserCircle />
                   <p>Profile</p>
                 </Link>
+                <Link to="/contact" className={linkStyleM}>Contact Veg-e</Link>
+                <Link to="/about" className={linkStyleM}>About Veg-e</Link>
                 <button onClick={logout}>
                   <Link className={linkStyle}>
                     <FaSignOutAlt />
@@ -211,13 +211,11 @@ const Navbar = () => {
               </div>}
           </div>
 
-          {/* Search and Other Links */}
+          {/* Search */}
           <Link className={linkStyleM} onClick={handleSearchClick}>
             <FaSearch />
             <p>Search</p>
           </Link>
-          <Link to="/contact" className={linkStyleM}>Contact Us</Link>
-          <Link to="/about" className={linkStyleM}>About Us</Link>
         </div>
       </div>
     </nav>

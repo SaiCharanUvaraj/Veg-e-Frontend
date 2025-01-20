@@ -6,10 +6,13 @@ import axios from 'axios';
 import origin from '../utilities/Origin';
 import Loader from '../components/Loader';
 import Footer from '../components/Footer';
+import { FaBackspace } from 'react-icons/fa';
+import { useLocation } from 'react-router-dom';
 
 const VegetableItems = () => {
   const [items,setItems]=useState(null);
   const [selected,setSelected]=useState(null);
+  const location = useLocation();
   const buttonStyle='rounded-md bg-[#347928] hover:scale-110 active:scale-95 px-3 py-2 text-lg md:text-xl text-white transition-all duration-300 font-semibold';
 
   function capitalize(str) 
@@ -37,6 +40,12 @@ const VegetableItems = () => {
     }
     fetchItemsInfo();
   },[])
+
+  useEffect(() => {
+      if (location.state && location.state.selectedItem) {
+        setSelected(location.state.selectedItem);
+      }
+  }, []);
 
   if (!items) {
     return (
@@ -94,7 +103,10 @@ const VegetableItems = () => {
         </div>
       }
       {(selected!==null) &&
-        <div className="pt-20">
+        <div className="pt-20 grid gap-5">
+          <div className='px-5'>
+            <button className={buttonStyle} onClick={()=>setSelected(null)}> <FaBackspace size={20} /> </button>
+          </div>
           <div className="bg-transparent p-2 flex md:flex-row flex-col items-center gap-10 justify-around">
             <div className="overflow-hidden rounded-xl">
               <img src={selected.url} className="hover:scale-125 transition-all duration-200" />

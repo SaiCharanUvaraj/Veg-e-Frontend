@@ -1,20 +1,27 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaSignInAlt, FaUserPlus, FaBars, FaTimes } from "react-icons/fa";
+import { FaSignInAlt, FaUserPlus, FaBars, FaTimes, FaList, FaChevronDown, FaCarrot, FaAppleAlt, FaCheese } from "react-icons/fa";
 
 const LandingNav = () => {
   // State to handle the mobile menu open/close
   const [isOpen, setIsOpen] = useState(false);
+  const [itemLists, setItemLists] = useState(false);
 
   // Toggle function to open and close the mobile menu
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  const toggleItemsDropdown = () => {
+    setItemLists(!itemLists);
+  };
+
   // Styling for links in desktop view
   const linkStyle = " flex items-center space-x-1 text-lg font-bold transition duration-300 hover:scale-110 active:scale-90";
   // Styling for links in mobile view
   const linkStyleM = "flex items-center space-x-1 text-lg font-bold";
+  const dropdownStyle = 'absolute grid place-items-start gap-3 mt-7 bg-white/50 backdrop-blur-2xl shadow-2xl rounded-lg text-black p-3 border';
+  const dropdownStyleM = 'grid place-items-start gap-3 mt-2 bg-white/30 backdrop-blur-lg shadow-lg rounded-lg text-black p-3';
 
   return (
     <nav className="bg-white/30 backdrop-blur-md p-5 fixed w-full shadow-2xl z-50 rounded-b-xl">
@@ -30,6 +37,31 @@ const LandingNav = () => {
             <FaUserPlus />
             <p>Sign Up</p>
           </Link>
+          {/* Items Dropdown */}
+          <div>
+            <Link className={linkStyle} onClick={toggleItemsDropdown}>
+              <FaList  />
+              <p>Items</p>
+              <FaChevronDown />
+            </Link>
+            {/* Display dropdown if itemLists is true */}
+            {itemLists && 
+              <div className={dropdownStyle}>
+                <Link to="/vegetables" className={linkStyle}>
+                  <FaCarrot />
+                  <p>Vegetables</p>
+                </Link>
+                <Link to="/fruits" className={linkStyle}>
+                  <FaAppleAlt />
+                  <p>Fruits</p>
+                </Link>
+                <Link to="/dairies" className={linkStyle}>
+                  <FaCheese />
+                  <p>Dairies</p>
+                </Link>
+              </div>
+            }
+          </div>
           <Link to="/about" className={linkStyle}>About Us</Link>
           <Link to="/contact" className={linkStyle}>Contact Us</Link>
         </div>
@@ -63,6 +95,31 @@ const LandingNav = () => {
           <FaUserPlus />
           <p>Sign Up</p>
         </Link>
+        {/* Items Dropdown */}
+        <div>
+          <Link className={linkStyle} onClick={toggleItemsDropdown}>
+            <FaList  />
+            <p>Items</p>
+            <FaChevronDown />
+          </Link>
+          {/* Display dropdown if itemLists is true */}
+          {itemLists && 
+            <div className={dropdownStyleM}>
+              <Link to="/vegetables" className={linkStyleM}>
+                <FaCarrot />
+                <p>Vegetables</p>
+              </Link>
+              <Link to="/fruits" className={linkStyleM}>
+                <FaAppleAlt />
+                <p>Fruits</p>
+              </Link>
+              <Link to="/dairies" className={linkStyleM}>
+                <FaCheese />
+                <p>Dairies</p>
+              </Link>
+            </div>
+          }
+        </div>
         <Link to="/about" className={linkStyleM}>About Us</Link>
         <Link to="/contact" className={linkStyleM}>Contact Us</Link>
       </div>
