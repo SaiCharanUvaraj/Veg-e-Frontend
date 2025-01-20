@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import origin from '../utilities/Origin';
 import { FaCog, FaShoppingCart, FaUserCircle, FaList, FaSignOutAlt, FaAppleAlt, FaCarrot } from "react-icons/fa";
-import { FaBars, FaTimes, FaHome, FaSearch, FaChevronDown, FaUser, FaCheese} from "react-icons/fa";
+import { FaBars, FaTimes, FaHome, FaSearch, FaChevronDown, FaUser, FaCheese } from "react-icons/fa";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -36,13 +36,13 @@ const Navbar = () => {
       searchElement.scrollIntoView({ behavior: 'smooth' });
   };
 
-  //handle logout
-  const logout = async() =>{
+  // Handle logout
+  const logout = async () => {
     axios.defaults.withCredentials = true;
-    const response = await axios.post(`${origin}/logout`,{});
-    if(response.data.success)
+    const response = await axios.post(`${origin}/logout`, {});
+    if (response.data.success)
       navigate('/');
-  }
+  };
 
   // Style variables for consistent styling across links and icons
   const linkStyle = "flex items-center text-lg justify-center space-x-1 font-bold transition duration-300 hover:scale-110 active:scale-90";
@@ -51,9 +51,14 @@ const Navbar = () => {
   const dropdownStyleM = 'grid place-items-start gap-3 mt-2 bg-white/30 backdrop-blur-lg shadow-lg rounded-lg text-black p-3';
 
   return (
-    <nav className="bg-white/40 backdrop-blur-lg p-5 fixed w-full z-[100] rounded-b-xl shadow-2xl">
+    <nav className="bg-white/40 backdrop-blur-lg p-2 fixed w-full z-[100] rounded-b-xl shadow-2xl">
       <div>
-        <div className="container mx-auto flex justify-end items-center">
+        <div className="container mx-auto flex justify-between items-center px-2">
+          {/* Logo */}
+          <Link to="/home" className="nerko-one-regular soft-shadow-text text-5xl font-extrabold text-[#347928] hover:scale-110 transition duration-300">
+            Veg-e
+          </Link>
+
           {/* Desktop Menu */}
           <div className="hidden lg:flex space-x-10">
 
@@ -66,12 +71,12 @@ const Navbar = () => {
             {/* Items Dropdown */}
             <div>
               <Link className={linkStyle} onClick={toggleItemsDropdown}>
-                <FaList  />
+                <FaList />
                 <p>Items</p>
                 <FaChevronDown />
               </Link>
               {/* Display dropdown if itemLists is true */}
-              {itemLists && 
+              {itemLists &&
                 <div className={dropdownStyle}>
                   <Link to="/vegetables" className={linkStyle}>
                     <FaCarrot />
@@ -103,7 +108,7 @@ const Navbar = () => {
                 <FaChevronDown />
               </Link>
               {/* Display dropdown if accountLists is true */}
-              {accountLists && 
+              {accountLists &&
                 <div className={dropdownStyle}>
                   <Link to="/settings" className={linkStyle}>
                     <FaCog />
@@ -135,12 +140,12 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <div className="lg:hidden">
             {/* Toggle button for opening and closing the mobile menu */}
-            {(!isOpen) && 
+            {(!isOpen) &&
               <button onClick={toggleMenu} className="text-[#347928] scale-125 hover:scale-150 focus:outline-none transition duration-300 active:scale-100">
                 <FaBars />
               </button>
             }
-            {(isOpen) && 
+            {(isOpen) &&
               <button onClick={toggleMenu} className="text-[#347928] scale-125 hover:scale-150 focus:outline-none transition duration-300 active:scale-100">
                 <FaTimes />
               </button>
@@ -157,11 +162,11 @@ const Navbar = () => {
           {/* Items Dropdown for Mobile */}
           <div>
             <Link className={linkStyleM} onClick={toggleItemsDropdown}>
-              <FaList  />
+              <FaList />
               <p>Items</p>
               <FaChevronDown />
             </Link>
-            {itemLists && 
+            {itemLists &&
               <div className={dropdownStyleM}>
                 <Link to="/vegetables" className={linkStyleM}>
                   <FaCarrot />
@@ -190,7 +195,7 @@ const Navbar = () => {
               <p>Account</p>
               <FaChevronDown />
             </Link>
-            {accountLists && 
+            {accountLists &&
               <div className={dropdownStyleM}>
                 <Link to="/settings" className={linkStyle}>
                   <FaCog />
