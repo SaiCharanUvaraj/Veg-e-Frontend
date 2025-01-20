@@ -51,7 +51,7 @@ const Navbar = () => {
   const dropdownStyleM = 'grid place-items-start gap-3 mt-2 bg-white/30 backdrop-blur-lg shadow-lg rounded-lg text-black p-3';
 
   return (
-    <nav className="bg-white/40 backdrop-blur-lg p-5 fixed w-full z-[100] rounded-b-xl shadow-2xl border">
+    <nav className="bg-white/40 backdrop-blur-lg p-5 fixed w-full z-[100] rounded-b-xl shadow-2xl">
       <div>
         <div className="container mx-auto flex justify-end items-center">
           {/* Desktop Menu */}

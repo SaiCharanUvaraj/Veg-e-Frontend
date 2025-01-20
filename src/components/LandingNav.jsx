@@ -24,7 +24,7 @@ const LandingNav = () => {
   const dropdownStyleM = 'grid place-items-start gap-3 mt-2 bg-white/30 backdrop-blur-lg shadow-lg rounded-lg text-black p-3';
 
   return (
-    <nav className="bg-white/30 backdrop-blur-md p-5 fixed w-full shadow-2xl z-50 rounded-b-xl">
+    <nav className="bg-white/40 backdrop-blur-lg p-5 fixed w-full shadow-2xl z-50 rounded-b-xl">
       <div className="container mx-auto flex justify-end items-center">
         
         {/* Desktop Menu - Hidden on mobile */}
@@ -86,7 +86,7 @@ const LandingNav = () => {
 
       {/* Mobile Menu - Displayed when the menu is open */}
       <div
-        className={`md:hidden grid gap-5 overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-64 opacity-100 pt-10' : 'max-h-0 opacity-0'}`} onClick={toggleMenu}>
+        className={`md:hidden grid gap-5 overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-100 opacity-100 pt-10' : 'max-h-0 opacity-0'}`}>
         <Link to="/signin" className={linkStyleM}>
           <FaSignInAlt />
           <p>Sign In</p>
@@ -97,7 +97,7 @@ const LandingNav = () => {
         </Link>
         {/* Items Dropdown */}
         <div>
-          <Link className={linkStyle} onClick={toggleItemsDropdown}>
+          <Link className={linkStyleM} onClick={toggleItemsDropdown}>
             <FaList  />
             <p>Items</p>
             <FaChevronDown />
