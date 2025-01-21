@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../components/Loader';
 import Navbar from '../components/Navbar';
+import CartInfo from '../components/CartInfo';
 
 const Cart = () => {
   const [userInfo, setUserInfo] = useState(null); 
@@ -42,9 +43,14 @@ const Cart = () => {
   return (
     <div>
       <Navbar />
-      <div className='pt-20'>
-        <p>Your current Cart items</p>
-        <p>{userInfo.cart}</p>
+      <div className="pt-20">
+        <CartInfo />
+      </div>
+      <div className='grid md:grid-cols-2 gap-5 bg-white/50 backdrop-blur-3xl rounded-xl shadow-lg border p-5 m-2 md:mx-10'>
+        Cart items
+      </div>
+      <div className='grid gap-2 place-content-center place-items-center'>
+        Ordering
       </div>
     </div>
   );
