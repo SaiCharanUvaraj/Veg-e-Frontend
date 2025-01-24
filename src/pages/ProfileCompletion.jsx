@@ -43,7 +43,15 @@ const ProfileCompletion = () => {
     // Handles input changes for the form fields
     const handleChange = (e) => {
         const { name, value } = e.target;
-
+        
+        if(name==="pin" && value==="")
+        {
+            setFormState((prevState) => ({
+                ...prevState,
+                [name]: value,
+            }));
+            return
+        }
         // Prevent invalid input for pincode field
         if (name === "pin" && (!/^[0-9]+$/.test(value) || value.length === 7)) {
             return;

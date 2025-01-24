@@ -10,7 +10,7 @@ import VegeInfo from '../components/VegeInfo'
 const Profile = () => {
   const [userInfo, setUserInfo] = useState(null); 
   const navigate = useNavigate();  
-  const buttonStyle='rounded-lg hover:bg-[#FCCD2A] bg-[#347928] text-center w-32 hover:scale-110 active:scale-95 p-3 text-lg md:text-xl text-black transition-all duration-300 mb-2 font-semibold';
+  const buttonStyle='rounded-lg bg-[#347928] text-center w-32 hover:scale-110 active:scale-95 p-3 text-lg md:text-xl text-white transition-all duration-300 mb-2 font-semibold';
   useEffect(() => {
     const fetchInfo = async () => {
       axios.defaults.withCredentials = true;
@@ -60,7 +60,7 @@ const Profile = () => {
   }
 
   return (
-    <div>
+    <div className='bg-gradient-to-b from-[#FFFBE6] to-[#347928]'>
       <Navbar />
       <div className="pt-20">
         <ProfileInfo />

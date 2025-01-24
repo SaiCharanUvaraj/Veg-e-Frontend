@@ -29,13 +29,6 @@ const Navbar = () => {
     setAccountLists(!accountLists);
   };
 
-  // Smooth scroll to the search section when search button is clicked
-  const handleSearchClick = () => {
-    const searchElement = document.getElementById('search');
-    if (searchElement)
-      searchElement.scrollIntoView({ behavior: 'smooth' });
-  };
-
   // Handle logout
   const logout = async () => {
     axios.defaults.withCredentials = true;
@@ -129,12 +122,6 @@ const Navbar = () => {
                 </div>
               }
             </div>
-
-            {/* Search Link */}
-            <Link className={linkStyle} onClick={handleSearchClick}>
-              <FaSearch />
-              <p>Search</p>
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -215,12 +202,6 @@ const Navbar = () => {
                 </button>
               </div>}
           </div>
-
-          {/* Search */}
-          <Link className={linkStyleM} onClick={handleSearchClick}>
-            <FaSearch />
-            <p>Search</p>
-          </Link>
         </div>
       </div>
     </nav>
