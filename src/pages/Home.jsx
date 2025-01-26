@@ -41,7 +41,7 @@ const Home = () => {
     return (
       <div>
         <Navbar />
-        <div className='flex justify-center items-center h-screen scale-150'>
+        <div className='flex justify-center items-center h-screen'>
           <Loader />
         </div>
       </div>

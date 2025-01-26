@@ -12,13 +12,19 @@ const Cart = () => {
   const [userInfo,setUserInfo]=useState(null)
   const buttonStyle='rounded-md bg-[#347928] hover:scale-110 active:scale-95 px-3 py-2 text-lg md:text-xl text-white transition-all duration-300 font-semibold';
   const [totCost,setTotCost]=useState("");
-  const [items,setItems]=useState(null);
+  const [items,setItems]=useState([]);
   const [loading,setLoading]=useState(false);
+  const [placed,setPlaced]=useState(false);
 
   function capitalize(str) 
   {
     if (!str) return '';
     return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  const generateId =()=>{
+    const date = new Date();
+    return `${userInfo.phone}${date.getFullYear()}${date.getMonth()}${date.getDate()}${date.getHours()}${date.getMinutes()}${date.getSeconds()}`;
   }
 
   useEffect(() => {
@@ -64,23 +70,74 @@ const Cart = () => {
     }
   }
 
+  const handlePlaceOrder=async() =>{
+    const id=generateId();
+    const date=new Date();
+    const order={
+      id,
+      name:userInfo.name,
+      phone:userInfo.phone,
+      address:userInfo.address,
+      date,
+      cart:items,
+      amount:totCost
+    }
+    setLoading(true);
+    try 
+    {
+      const response = await axios.post(`${origin}/place-order`,order);
+      if (response.data.success)
+      {
+        setItems([]);
+        setLoading(false);
+        setPlaced(true);
+      }
+    } 
+    catch (error) 
+    {
+      console.log(error);
+    }
+  }
+
   if (!userInfo) {
     return (
       <div>
         <Navbar />
-        <div className='flex justify-center items-center h-screen scale-150'>
+        <div className="pt-20">
+          <CartInfo />
+        </div>
+        <div className=' mt-10 flex justify-center items-center'>
           <Loader />
         </div>
       </div>
     );
   }
 
-  if (items.length===0) {
+  if (items.length===0 && placed===false) {
     return (
       <div>
         <Navbar />
-        <div className='flex justify-center items-center h-screen scale-150 text-2xl font-bold text-[#347928]'>
+        <div className="pt-20">
+          <CartInfo />
+        </div>
+        <div className='mt-10 flex nerko-one-regular justify-center items-center text-3xl font-bold text-[#347928]'>
           Your Cart is Empty
+        </div>
+      </div>
+    );
+  }
+
+  if (items.length===0 && placed) {
+    return (
+      <div>
+        <Navbar />
+        <div className="pt-20">
+          <CartInfo />
+        </div>
+        <div className='mt-10 flex nerko-one-regular flex-col justify-center items-center text-3xl font-bold text-[#347928] gap-3'>
+          <p>Your Order is placed.</p>
+          <p>Cash on delivery</p>
+          <p className='text-black'>Pay ₹{totCost} on delivery </p>
         </div>
       </div>
     );
@@ -117,7 +174,7 @@ const Cart = () => {
       <div className='grid gap-2 place-content-center place-items-center p-5 m-2 md:mx-10'>
         <div className="bg-white/40 backdrop-blur-2xl md:p-5 p-2 rounded-xl shadow-lg hover:shadow-2xl hover:bg-white/50 transition-all duration-200 overflow-hidden border grid place-items-center gap-5">
           <p className="text-xl font-bold">The total cost of the cart is {totCost}</p>
-          <button className={buttonStyle}>Place Order</button>
+          <button className={buttonStyle} onClick={handlePlaceOrder}>Place Order</button>
         </div>
       </div>
       <Footer />

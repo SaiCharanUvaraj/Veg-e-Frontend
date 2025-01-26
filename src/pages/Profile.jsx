@@ -52,7 +52,7 @@ const Profile = () => {
         <div className="pt-20">
           <ProfileInfo />
         </div>
-        <div className='flex justify-center items-center h-screen scale-150'>
+        <div className='mt-10 flex justify-center items-center'>
           <Loader />
         </div>
       </div>

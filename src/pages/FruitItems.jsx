@@ -105,7 +105,7 @@ const FruitItems = () => {
         <div className="pt-20">
           <FruitInfo />
         </div>
-        <div className='flex justify-center items-center h-screen scale-150'>
+        <div className='mt-10 flex justify-center items-center'>
           <Loader />
         </div>
       </div>
@@ -119,7 +119,7 @@ const FruitItems = () => {
         <div className="pt-20">
           <FruitInfo />
         </div>
-        <div className='flex justify-center items-center h-screen scale-150'>
+        <div className='mt-10 flex justify-center items-center'>
           Not available
         </div>
       </div>

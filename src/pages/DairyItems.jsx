@@ -105,7 +105,7 @@ const DairyItems = () => {
         <div className="pt-20">
           <DairyInfo />
         </div>
-        <div className='flex justify-center items-center h-screen scale-150'>
+        <div className='flex justify-center items-center mt-10'>
           <Loader />
         </div>
       </div>
@@ -119,7 +119,7 @@ const DairyItems = () => {
         <div className="pt-20">
           <DairyInfo />
         </div>
-        <div className='flex justify-center items-center h-screen scale-150'>
+        <div className='flex justify-center items-center mt-10'>
           Not available
         </div>
       </div>
